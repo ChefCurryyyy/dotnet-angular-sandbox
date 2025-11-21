@@ -19,13 +19,13 @@ public class TodoController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetTodos()
     {
-        return Ok(await _context.TodoItems.ToListAsync());
+        return Ok(await _context.Todo.ToListAsync());
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTodo([FromBody] TodoItem todo)
+    public async Task<IActionResult> CreateTodo([FromBody] Todo todo)
     {
-        _context.TodoItems.Add(todo);
+        _context.Todo.Add(todo);
         await _context.SaveChangesAsync();
         return Ok(todo);
     }
